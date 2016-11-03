@@ -12,38 +12,48 @@
 print("START*******")
 
 import nltk
+import random
 from nltk import word_tokenize,sent_tokenize
 from nltk.book import * 
 
+print('\n')
+print('ORIGINAL TEXT')
 list_first_150 = text2[:150]
 #print(first_150)
 string_first_150 = ' '.join(list_first_150)
+print(string_first_150)
+print('\n')
 tokens = nltk.word_tokenize(string_first_150)
 print("TOKENS")
 print(tokens)
+print('\n')
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
 print("TAGGED TOKENS")
 print(tagged_tokens)
+print('\n')
 
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective"}
 substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.1,"JJ":.1}
 
-word_list = []
+def spaced(word):
+	if word in [",", ".", "?", "!", ":"]:
+		return word
+	else:
+		return " " + word
 
-noun = input("Enter a noun: ")
-word_list.append(noun)
+final_words = []
 
-plural_noun = input("Enter a plural noun: ")
-word_list.append(plural_noun)
 
-verb1 = input("Enter a verb: ")
-word_list.append(verb1)
+for (word, tag) in tagged_tokens:
+	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
+		final_words.append(spaced(word))
+	else:
+		new_word = input("Please enter %s:\n" % (tagmap[tag]))
+		final_words.append(spaced(new_word))
 
-verb2 = input("Enter another verb: ")
-word_list.append(verb2)
-
-adj = input("Enter an adjective: ")
-word_list.append(adj)
+print('\n')
+print("NEW TEXT")
+print ("".join(final_words))
 
 
 print("\n\nEND*******")
