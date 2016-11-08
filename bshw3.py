@@ -33,7 +33,7 @@ new_string3 = ''
 
 for video in soup.find_all('iframe'):
 	if str(video.get('src')) == 'https://www.youtube.com/embed/mimp_3gquc4?feature=oembed':
-		new_string3 = new_string2.replace(str(video.get('src')), 'https://pbs.twimg.com/profile_images/730802398365667329/_CpVRktv.jpg')
+		new_string3 = new_string2.replace(str(video.get('src')), 'colleen.jpg')
 
 f = open('BSI.html','w')
 f.write(new_string3)
