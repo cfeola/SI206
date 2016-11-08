@@ -16,24 +16,27 @@ import random
 from nltk import word_tokenize,sent_tokenize
 from nltk.book import * 
 
-print('\n')
+print('\n') 
 print('ORIGINAL TEXT')
+#Prints list of the first 150 tokens of original text  
 list_first_150 = text2[:150]
-#print(first_150)
+
+# Prints the first 150 tokens of the original text as a string
 string_first_150 = ' '.join(list_first_150)
 print(string_first_150)
 print('\n')
-tokens = nltk.word_tokenize(string_first_150)
-print("TOKENS")
-print(tokens)
-print('\n')
-tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print("TAGGED TOKENS")
-print(tagged_tokens)
-print('\n')
 
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective"}
-substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.1,"JJ":.1}
+# Tokenizes the first 150 words 
+tokens = nltk.word_tokenize(string_first_150)
+
+# Gives us a tagged list of tuples 
+tagged_tokens = nltk.pos_tag(tokens) 
+
+# Dictionary where the tags are the keys and what they represent are the values 
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", ".":"punctuation mark"}
+
+# Dictionary where the tags are the keys and their substitution probabilities are the values 
+substitution_probabilities = {"NN":.15,"NNS":.15,"VB":.1,"JJ":.1, ".":.1}
 
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
@@ -43,7 +46,7 @@ def spaced(word):
 
 final_words = []
 
-
+# Iterates through the tagged list of tuples and randomly substitues new words for words in the old text 
 for (word, tag) in tagged_tokens:
 	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
 		final_words.append(spaced(word))
@@ -53,6 +56,7 @@ for (word, tag) in tagged_tokens:
 
 print('\n')
 print("NEW TEXT")
+# Prints the new text
 print ("".join(final_words))
 
 
