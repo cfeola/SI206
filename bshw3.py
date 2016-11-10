@@ -24,11 +24,10 @@ soup = BeautifulSoup(r.text, 'lxml')
 string = str(soup)
 
 # Replaces the local header image with the image that Colleen provided 
-new_string = string.replace('/sites/default/themes/umsi/imgs/logo.png', 'https://github.com/cvanlent/SI206/blob/master/HW3-StudentCopy/media/logo.png?raw=true')
+new_string = string.replace('/sites/default/themes/umsi/imgs/logo.png', 'logo.png')
 
 # Replaces the local footer image with the image that Colleen provided 
-new_string1 = new_string.replace('/sites/default/themes/umsi/imgs/logo_footer.png', 'https://github.com/cvanlent/SI206/blob/master/HW3-StudentCopy/media/logo.png?raw=true')
-
+new_string1 = new_string.replace('/sites/default/themes/umsi/imgs/logo_footer.png', 'logo.png')
 # Replaces student with AMAZING student
 new_string2 = new_string1.replace('student', 'AMAZING student')
 
