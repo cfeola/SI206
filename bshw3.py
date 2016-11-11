@@ -11,7 +11,6 @@
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
 
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -24,15 +23,15 @@ soup = BeautifulSoup(r.text, 'lxml')
 string = str(soup)
 
 # Replaces the local header image with the image that Colleen provided 
-new_string = string.replace('/sites/default/themes/umsi/imgs/logo.png', 'logo.png')
+new_string = string.replace('/sites/default/themes/umsi/imgs/logo.png', 'media/logo.png')
 
 # Replaces the local footer image with the image that Colleen provided 
-new_string1 = new_string.replace('/sites/default/themes/umsi/imgs/logo_footer.png', 'logo.png')
+new_string1 = new_string.replace('/sites/default/themes/umsi/imgs/logo_footer.png', 'media/logo.png')
 # Replaces student with AMAZING student
 new_string2 = new_string1.replace('student', 'AMAZING student')
 
 # Replaces video on the original webpage with my personal image 
-new_string3 = new_string2.replace('https://www.youtube.com/embed/mimp_3gquc4?feature=oembed', 'colleen.jpg')
+new_string3 = new_string2.replace('https://www.youtube.com/embed/mimp_3gquc4?feature=oembed', 'media/colleen.jpg')
 
 # Creates a new HTML file & writes the changes made to the original HTML file to the new HTML file
 f = open('BSI.html','w')
