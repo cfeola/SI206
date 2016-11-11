@@ -19,7 +19,7 @@ auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
 
 # Posts an image with the required hashtags to personal Twitter account 
-post_image_status = api.update_with_media('imwithher.jpg', status = "#UMSI206 #Proj3")
+post_image_status = api.update_with_media('media/imwithher.jpg', status = "#UMSI206 #Proj3")
 
 print("""No output necessary although you 
 	can print out a success/failure message if you want to.""")
